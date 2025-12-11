@@ -1,15 +1,6 @@
-flask
-pandas
-numpy
-gunicorn  # add versions if needed
-#cmd to install --- pip install -r requirements.txt
-if any specify version u need just add the version numbers to install
+Flask==3.0.0
+flask-cors==4.0.0
+pandas==2.1.4
+numpy==1.26.2
 
-
-
-
-
-
-
-
-
+gunicorn
