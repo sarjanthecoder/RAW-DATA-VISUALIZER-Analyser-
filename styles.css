@@ -28,7 +28,7 @@
     --spacing-2xl: 4rem;
     
     /* Border Radius */
-    --radius-sm: 8px;
+    --radius-sm: 18px;
     --radius-md: 16px;
     --radius-lg: 24px;
     --radius-xl: 32px;
@@ -823,3 +823,4 @@ tr:hover td {
         font-size: 1rem;
     }
 }
+
