@@ -3,6 +3,9 @@ pandas
 numpy
 gunicorn  # add versions if needed
 #cmd to install --- pip install -r requirements.txt
+if any specify version u need just add the version numbers to install
+
+
 
 
 
