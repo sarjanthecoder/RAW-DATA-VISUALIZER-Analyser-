@@ -2,6 +2,7 @@ flask
 pandas
 numpy
 gunicorn  # add versions if needed
+#cmd to install --- pip install -r requirements.txt
 
 
 
