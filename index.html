@@ -1,1 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Insights Pro - CSV Data Visualization</title>
+    <meta name="description" content="Upload your CSV files and get instant, beautiful data visualizations and insights">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-gradient"></div>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect x="5" y="15" width="8" height="20" rx="2" fill="url(#grad1)"/>
+                    <rect x="16" y="10" width="8" height="25" rx="2" fill="url(#grad2)"/>
+                    <rect x="27" y="5" width="8" height="30" rx="2" fill="url(#grad3)"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="9" y1="15" x2="9" y2="35">
+                            <stop offset="0%" stop-color="#667eea"/>
+                            <stop offset="100%" stop-color="#764ba2"/>
+                        </linearGradient>
+                        <linearGradient id="grad2" x1="20" y1="10" x2="20" y2="35">
+                            <stop offset="0%" stop-color="#f093fb"/>
+                            <stop offset="100%" stop-color="#f5576c"/>
+                        </linearGradient>
+                        <linearGradient id="grad3" x1="31" y1="5" x2="31" y2="35">
+                            <stop offset="0%" stop-color="#4facfe"/>
+                            <stop offset="100%" stop-color="#00f2fe"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">Data Insights Pro</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#upload" class="nav-link">Upload</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Transform Your Data Into 
+                <span class="gradient-text">Beautiful Insights</span>
+            </h1>
+            <p class="hero-description">
+                Upload your CSV files and instantly visualize your data with stunning charts and actionable insights. 
+                No coding required.
+            </p>
+            <a href="#upload" class="cta-button">
+                <span>Get Started</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        <div class="hero-visual">
+            <div class="glass-card floating">
+                <div class="mini-chart">
+                    <div class="bar" style="height: 60%;"></div>
+                    <div class="bar" style="height: 85%;"></div>
+                    <div class="bar" style="height: 45%;"></div>
+                    <div class="bar" style="height: 95%;"></div>
+                    <div class="bar" style="height: 70%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2 class="section-title">Upload Your CSV File</h2>
+            <p class="section-subtitle">Drag and drop your file or click to browse</p>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="file-drop-area" id="dropArea">
+                    <svg class="upload-icon" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                        <path d="M15 40L30 25L45 40M30 25V52.5" stroke="url(#uploadGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M50 47.5C54.1421 47.5 57.5 44.1421 57.5 40C57.5 35.8579 54.1421 32.5 50 32.5C49.6522 32.5 49.3088 32.5198 48.9712 32.5581C48.3279 26.4067 23.1693 22.5 17.5 22.5C9.76801 22.5 2.5 27.2218 2.5 35C2.5 42.7782 9.76801 47.5 17.5 47.5" stroke="url(#uploadGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="uploadGrad" x1="30" y1="22.5" x2="30" y2="52.5">
+                                <stop offset="0%" stop-color="#667eea"/>
+                                <stop offset="100%" stop-color="#764ba2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <p class="drop-text">Drop your CSV file here or <span class="browse-text">browse</span></p>
+                    <input type="file" id="fileInput" accept=".csv" hidden>
+                    <p class="file-info" id="fileInfo"></p>
+                </div>
+                <button type="submit" class="submit-button" id="submitBtn" disabled>
+                    <span>Analyze Data</span>
+                </button>
+            </form>
+
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing your data...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Your Data Insights</h2>
+            
+            <!-- Summary Cards -->
+            <div class="stats-grid" id="statsGrid"></div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid" id="chartsGrid"></div>
+
+            <!-- Top Items Table -->
+            <div class="glass-card" id="topItemsCard" style="display: none;">
+                <h3 class="card-title">Top Items</h3>
+                <div class="table-container" id="topItemsTable"></div>
+            </div>
+
+            <!-- Statistics Table -->
+            <div class="glass-card" id="statisticsCard" style="display: none;">
+                <h3 class="card-title">Statistical Summary</h3>
+                <div class="table-container" id="statisticsTable"></div>
+            </div>
+
+            <button class="cta-button" onclick="location.reload()">
+                <span>Analyze Another File</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to understand your data</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Instant Visualizations</h3>
+                    <p>Beautiful charts and graphs generated automatically from your data</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Insights</h3>
+                    <p>AI-powered analysis highlights the most important patterns in your data</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Process thousands of rows in seconds with our optimized engine</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data never leaves your browser. Complete privacy guaranteed</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Access your insights from any device - desktop, tablet, or mobile</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful UI</h3>
+                    <p>Modern glassmorphism design that's both stunning and functional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                            <rect x="5" y="15" width="8" height="20" rx="2" fill="url(#footerGrad1)"/>
+                            <rect x="16" y="10" width="8" height="25" rx="2" fill="url(#footerGrad2)"/>
+                            <rect x="27" y="5" width="8" height="30" rx="2" fill="url(#footerGrad3)"/>
+                            <defs>
+                                <linearGradient id="footerGrad1" x1="9" y1="15" x2="9" y2="35">
+                                    <stop offset="0%" stop-color="#667eea"/>
+                                    <stop offset="100%" stop-color="#764ba2"/>
+                                </linearGradient>
+                                <linearGradient id="footerGrad2" x1="20" y1="10" x2="20" y2="35">
+                                    <stop offset="0%" stop-color="#f093fb"/>
+                                    <stop offset="100%" stop-color="#f5576c"/>
+                                </linearGradient>
+                                <linearGradient id="footerGrad3" x1="31" y1="5" x2="31" y2="35">
+                                    <stop offset="0%" stop-color="#4facfe"/>
+                                    <stop offset="100%" stop-color="#00f2fe"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="logo-text">Data Insights Pro</span>
+                    </div>
+                    <p class="footer-description">Transform your data into actionable insights with beautiful visualizations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#upload">Upload Data</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Data Insights Pro. All rights reserved.</p>
+                <p>Made with ❤️ for data enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
 
