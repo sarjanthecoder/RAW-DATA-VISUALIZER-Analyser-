@@ -1,5 +1,5 @@
 // ===================================
-// FILE UPLOAD HANDLING
+// FILE UPLOAD HANDLING to visualizations 
 // ===================================
 
 const uploadForm = document.getElementById('uploadForm');
