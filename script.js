@@ -1,5 +1,5 @@
 // ===================================
-// FILE UPLOAD HANDLING     no api
+// FILE UPLOAD HANDLING
 // ===================================
 
 const uploadForm = document.getElementById('uploadForm');
@@ -12,9 +12,7 @@ const resultsSection = document.getElementById('results');
 
 let selectedFile = null;
 
-
-// Click to browse or use  to experience
-
+// Click to browse
 dropArea.addEventListener('click', () => {
     fileInput.click();
 });
@@ -405,7 +403,3 @@ document.querySelectorAll('.feature-card').forEach(card => {
 });
 
 console.log('🚀 Data Insights Pro - Ready!');
-
-
-
-
