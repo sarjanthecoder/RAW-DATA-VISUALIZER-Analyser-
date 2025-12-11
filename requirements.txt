@@ -1,7 +1,8 @@
 flask
 pandas
 numpy
-gunicorn
+gunicorn#for deploymrnt#
+
 
 
 
