@@ -13,7 +13,8 @@ const resultsSection = document.getElementById('results');
 let selectedFile = null;
 
 
-// Click to browse or use
+// Click to browse or use  to experience
+
 dropArea.addEventListener('click', () => {
     fileInput.click();
 });
@@ -404,6 +405,7 @@ document.querySelectorAll('.feature-card').forEach(card => {
 });
 
 console.log('🚀 Data Insights Pro - Ready!');
+
 
 
 
