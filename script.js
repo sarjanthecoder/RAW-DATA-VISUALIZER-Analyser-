@@ -1,5 +1,5 @@
 // ===================================
-// FILE UPLOAD HANDLING
+// FILE UPLOAD HANDLING     no api
 // ===================================
 
 const uploadForm = document.getElementById('uploadForm');
@@ -404,4 +404,5 @@ document.querySelectorAll('.feature-card').forEach(card => {
 });
 
 console.log('🚀 Data Insights Pro - Ready!');
+
 
