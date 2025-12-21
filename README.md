@@ -1,3 +1,4 @@
+
 # Data Insights Pro 📊
 
 A stunning, modern web application for CSV data visualization with glassmorphism design. Upload your CSV files and get instant, beautiful visualizations and actionable insights.
